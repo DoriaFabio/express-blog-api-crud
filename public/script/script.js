@@ -3,14 +3,14 @@
 console.clear();
 
 //! Api URL 
-const baseUrl = "https://jsonplaceholder.typicode.com";
-// //! Endpoint
-const resource = "/photos";
-const endpoint = baseUrl + resource;
-// //! Params
-let randomNumber = Math.floor(Math.random() * 5000);
-let randomNumberDue = Math.floor(Math.random() * 5000);
-const paramsOne = `?_start=${randomNumberDue}&_limit=1`;
+const baseUrl = "http://localhost:5500/";
+//! Endpoint
+const resource = {
+    posts: "posts"
+};
+//! Params
+const params = { _limit: 6 };
+const params2 = { min: 1, max: 10 };
 
 //!  costanti
 const card = document.getElementById("card");
@@ -22,22 +22,23 @@ const imgOverlay = document.getElementById("imgOver");
 let selPhoto;
 
 //! Stampare le card
-
-function getData(param = `?_start=${randomNumber}&_limit=6`) {
+getData(resource.posts, params2);
+function getData(resource, params) {
     // limite di 6
-    axios.get(endpoint + param).then((res) => {    //! chiamata axios
-        const photos = res.data;
-        console.log(photos);
-        const template = photos.map((photo) => {
-            const { id, title, url } = photo          //! Destrutturazione
+    axios.get(baseUrl + resource + params).then((res) => {    //! chiamata axios
+        const posts = res.data;
+        console.log(posts);
+        const template = posts.map((post) => {
+            const { id, titolo, contenuto, immagine, tags } = post   //! Destrutturazione
             return `
             <figure id="${id}" class="col d-flex flex-column">
               <img id="pin" src="../images/pin.svg" alt="Pallino">
               <div class="img">
-                  <img src="${url}" alt="${title}">
+                  <img src="${immagine}" alt="${titolo}">
               </div>
               <div class="text">
-                <p>${title}</p>
+                <p>${titolo}</p>
+                <p>${contenuto}</p>
             </div>
           </figure>
             `;
@@ -100,8 +101,8 @@ function getFigures(p) {
             overlay.classList.remove("d-none");
             selPhoto = p.find((el) => el.id === parseInt(figure.id));
             console.log(selPhoto);
-            imgOverlay.src = selPhoto.url;
-            imgOverlay.alt = selPhoto.title;
+            imgOverlay.src = selPhoto.immagine;
+            imgOverlay.alt = selPhoto.titolo;
         });
     });
     closeButton.addEventListener("click", function () {
@@ -129,4 +130,4 @@ function getFigures(p) {
 //     getData(paramsOne);
 // });
 
-getData();
+

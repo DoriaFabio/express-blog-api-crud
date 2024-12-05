@@ -2,20 +2,19 @@ const express = require("express");
 const app = express();
 const PORT = 5500;
 
-const postsRouter = require("./routers/posts");
 //definisco dove sono gli asset statici
 app.use(express.static("public")); //http://localhost:5500/
 
 // il body di qualunque richiesta va parsato come application/json
 app.use(express.json());
 
-//rotte API
-app.use("/posts", postsRouter);
-
-const homeController = require("./controllers/homeController");
 //rotte web
+// const homeController = require("./controllers/homeController");
+// app.get("/", homeController.index);
 
-app.get("/", homeController.index);
+//rotte API
+const postsRouter = require("./routers/posts");
+app.use("/posts", postsRouter);
 
 //rotta fallback
 app.all("*", (req, res) => {
