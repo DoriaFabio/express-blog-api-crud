@@ -26,6 +26,8 @@ const postsRouter = require("./routers/posts");
 //definisco dove sono gli asset statici
 app.use(express.static("public")); //http://localhost:5500/
 
+// il body di qualunque richiesta va parsato come application/json
+app.use(express.json());
 
 //rotte API
 app.use("/posts", postsRouter);

@@ -1,5 +1,5 @@
 const blog = require("../data/post.js"); //i vostri posts
-const { post } = require("../routers/posts.js");
+// const { post } = require("../routers/posts.js");
 
 function index(req, res) {
   const itemTitle = req.query.titolo;
@@ -46,7 +46,7 @@ function show(req, res) {
 }
 
 function store(req, res) {
-  res.send("Creazione nuovo post");
+  // res.send("Creazione nuovo post");
   let newid = 0;
   for(let i = 0; i < blog.length; i++) {
     if(blog[i].id > newid) {
@@ -72,6 +72,12 @@ function update(req, res) {
   const item = blog.find((item) => item.id === id);
   if (item) {
     res.send(`Modifica integrale del post ${id}`);
+    for(key in item) {
+      if(key !== "id") {
+        item[key] = req.body[key];
+      }
+    }
+    res.json(item);
   } else {
     res.status(404);
     res.json({
