@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"   />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <!-- Script -->
+    <script src="../public/script/script.js" type="module"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../public/CSS/style.css">
+    <title>Blog</title>
+</head>
+
+<body>
+    <header class="d-flex justify-center align-center">
+        <h1>Post</h1> 
+    </header>
+    <main>
+        <div class="container">
+            <!-- <a id="add">Aggiungi</a> -->
+            <div id="overlay" class="d-flex flex-column justify-center align-center d-none">
+                <div class="d-flex">
+                    <a id="close">Chiudi</a>
+                    <a id="delete">Elimina</a>
+                </div>
+                <img  id="imgOver" src="../public/images/pin.svg" alt="Immagine">
+            </div>
+            <div id="card"  class="d-flex wrap g-row justify-center">
+                
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

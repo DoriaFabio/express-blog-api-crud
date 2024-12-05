@@ -12,6 +12,10 @@ app.use(express.json());
 //rotte API
 app.use("/posts", postsRouter);
 
+const homeController = require("./controllers/homeController");
+//rotte web
+
+app.get("/", homeController.index);
 
 //rotta fallback
 app.all("*", (req, res) => {

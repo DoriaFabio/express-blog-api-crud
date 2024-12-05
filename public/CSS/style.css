@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Edu TAS Beginner", serif;
+}
+
+h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.g-row {
+    gap: 20px;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.d-none {
+    display: none;
+}
+
+header {
+    background-image: url(../images/wall.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+}
+main {
+    background-image: url(../images/cork.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 100px);
+    /* height: 100%; */
+}
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 35px;
+    position: relative;
+}
+
+.col {
+    width: calc((100% - 40px)/3);
+    position: relative;
+    background-color: white;
+    border: 1px solid black;
+    transition-duration: 0.5s;
+}
+
+.col:hover {
+    transform: scale(1.1);
+    rotate: 15deg;
+    z-index: 3;
+    box-shadow: 12px 12px 5px 0px rgba(0,0,0,0.7);
+    cursor: pointer;
+}
+
+.col:hover #pin {
+    display: none;
+}
+
+.img {
+    aspect-ratio: 1;
+    border: 1px solid black;
+    margin: 12px 12px;
+}
+
+.text {
+    height: 25%;
+    margin: 0px 12px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+#pin {
+    position: absolute;
+    top: -9px;
+    left: 100px;
+    width: 23px;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 4;
+}
+
+#overlay img {
+    width: 500px;
+    height: 500px;
+    margin-top: 20px;
+    box-shadow: 10px 10px 6px 7px rgba(0,0,0,0.7);
+}
+
+a {
+    padding: 7px 20px;
+    background-color: #78e55f;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 50px;
+    font-size: 25px;
+    box-shadow: 10px 10px 6px 0px rgba(0,0,0,0.7);
+    transition-duration: 0.3s;
+    margin: 0px 10px;
+}
+
+a:hover {
+    background-color: #15f024;
+    transform: scale(1.1);
+}
+
+#overlay a:first-child {
+    background-color: #E5A35F;
+}
+
+#overlay a:first-child:hover {
+    background-color: #f08009;
+    
+}
+
+#overlay a:last-child {
+    background-color: #e75858;
+}
+
+#overlay a:last-child:hover {
+    background-color: #e11717;
+}
+
+/* #add {
+    position: absolute;
+    top: 30px;
+    left: -80px;
+    padding: 5px 10px;
+    font-size: 17px;
+} */
+
+
+@media  screen and (max-width: 768px) {
+    .col {
+        width: calc((100% - 40px)/2);
+    }
+    #pin {
+        position: absolute;
+        top: -9px;
+        left: 48%;
+        width: 23px;
+    }
+    main {
+        background-image: url(./img/cork.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+    .container {
+        padding: 20px 70px;;
+    }
+
+    #overlay img {
+        width: 300px;
+        height: 300px;
+    }
+    /* #add {
+        position: absolute;
+        top: 30px;
+        left: -5px;
+        padding: 5px 10px;
+        font-size: 14px;
+    } */
+}
+
+@media  screen and (max-width: 426px) {
+    .col {
+        width: calc((100%)/1);
+        margin: 0px 20px;
+    }
+    #pin {
+        position: absolute;
+        top: -9px;
+        left: 48%;
+        width: 23px;
+    }
+    main {
+        background-image: url(./img/cork.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+
+    #overlay img {
+        width: 200px;
+        height: 200px;
+    }
+    /* #add {
+        position: absolute;
+        top: 30px;
+        left: -5px;
+        padding: 5px 10px;
+        font-size: 11px;
+    } */
+    .container {
+        padding: 20px 50px;;
+    }
+}
