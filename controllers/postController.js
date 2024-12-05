@@ -28,8 +28,6 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  //pizzas/1/
-  //console.log(req.params);
   const id = parseInt(req.params.id);
   const item = blog.find((item) => item.id === id);
   if (item) {
@@ -79,7 +77,6 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
-  //res.send("Cancellazione della pizza con id: " + req.params.id);
   const id = parseInt(req.params.id);
   const index = blog.findIndex((item) => item.id === id);
   if (index !== -1) {
@@ -94,4 +91,4 @@ function destroy(req, res) {
   }
 }
 
-module.exports = { index, show, store, update, destroy };
+module.exports = { index, show, store, update, modify, destroy };

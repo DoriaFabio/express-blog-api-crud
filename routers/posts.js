@@ -1,31 +1,33 @@
 const express = require("express");
 const router = express.Router();
 
-const {
-    index,
-    show,
-    store,
-    update,
-    modify,
-    destroy,
-} = require("../controllers/postController");
+const controller = require('../controllers/postController');
+
+// const {
+//     index,
+//     show,
+//     store,
+//     update,
+//     modify,
+//     destroy,
+// } = require("../controllers/postController");
 
 // index
-router.get("/", index);
+router.get("/", controller.index);
 
 // leggere un solo post - Read one - Show
-router.get("/:id", show);
+router.get("/:id", controller.show);
 
 //Create - Store
-router.post("/", store);
+router.post("/", controller.store);
 
 //Update totale - Update
-router.put("/:id", update);
+router.put("/:id", controller.update);
 
 //Update parziale - Modify
-router.patch("/:id", modify);
+router.patch("/:id", controller.modify);
 
 //Delete (cancellazione) - Destroy
-router.delete("/:id", destroy);
+router.delete("/:id", controller.destroy);
 
 module.exports = router;
