@@ -18,11 +18,11 @@ router.get("/", (req, res) => {
         response.data = blog.filter((item) =>
             item.titolo.toLowerCase().includes(itemName.toLowerCase())
         );
-        if (itemTags) {
-            response.data = blog.filter((item) =>
-                item.tags.includes(itemTags.toLowerCase())
-            );
-        }
+        // if (itemTags) {
+        //     response.data = blog.filter((item) =>
+        //         item.tags.includes(itemTags.toLowerCase())
+        //     );
+        // }
         // if (response.data.length < 1) {
         //   res.status(404);
         //   response = {
