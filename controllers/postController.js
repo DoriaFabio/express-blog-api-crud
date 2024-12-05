@@ -1,4 +1,5 @@
 const blog = require("../data/post.js"); //i vostri posts
+const { post } = require("../routers/posts.js");
 
 function index(req, res) {
   const itemTitle = req.query.titolo;
@@ -46,6 +47,24 @@ function show(req, res) {
 
 function store(req, res) {
   res.send("Creazione nuovo post");
+  let newid = 0;
+  for(let i = 0; i < blog.length; i++) {
+    if(blog[i].id > newid) {
+      newid = blog[i].id
+    }
+  }
+  newid += 1;
+
+  const newPost = {
+    id: newid,
+    titolo: req.body.titolo,
+    contenuto: req.body.contenuto,
+    immagine: req.body.immagine,
+    tags: req.body.tags
+  }
+
+  blog.push(newPost);
+  res.status(201).json(newPost);
 }
 
 function update(req, res) {
