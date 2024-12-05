@@ -51,8 +51,33 @@ function store(req, res) {
 }
 
 function update(req, res) {
-  res.send("Modifica integrale del post con id: " + req.params.id);
+  id = parseInt(req.params.id);
+  const item = blog.find((item) => item.id === id);
+  if (item) {
+    res.send(`Modifica integrale del post ${id}`);
+  } else {
+    res.status(404);
+    res.json({
+      success: false,
+      message: `Il post ${id} non esiste`,
+    });
+  }
 }
+
+function modify(req, res) {
+  id = parseInt(req.params.id);
+  const item = blog.find((item) => item.id === id);
+  if (item) {
+    res.send(`Modifica parziale del post ${id}`);
+  } else {
+    res.status(404);
+    res.json({
+      success: false,
+      message: `Il post ${id} non esiste`,
+    });
+  }
+}
+
 function destroy(req, res) {
   //res.send("Cancellazione della pizza con id: " + req.params.id);
   const id = parseInt(req.params.id);
