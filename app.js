@@ -16,10 +16,19 @@ app.use(express.json());
 const postsRouter = require("./routers/posts");
 app.use("/posts", postsRouter);
 
+// middlewares
+const checkTime = require("./middlewares/checkTime");
+const errorsHandler = require("./middlewares/errorsHandler");
+const notFound = require("./middlewares/notFound");
+
+app.use(checkTime);
+app.use(errorsHandler);
+app.use(notFound);
+
 //rotta fallback
-app.all("*", (req, res) => {
-  res.status(404).send("<h1>Error 404 - Not Found !</h1>");
-});
+// app.all("*", (req, res) => {
+//   res.status(404).send("<h1>Error 404 - Not Found !</h1>");
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}}`);
