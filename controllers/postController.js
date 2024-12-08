@@ -1,4 +1,6 @@
 const blog = require("../data/post.js"); //i vostri posts
+const CustomError = require("../class/customError");
+
 // const { post } = require("../routers/posts.js");
 
 function index(req, res) {
