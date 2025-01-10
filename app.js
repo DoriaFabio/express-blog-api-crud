@@ -7,6 +7,8 @@ const corsPolicy = require("./middlewares/corsPolicy");
 const errorsHandler = require("./middlewares/errorsHandler");
 const notFound = require("./middlewares/notFound");
 const postsRouter = require("./routers/posts");
+const tagsRouter = require("./routers/tags");
+
 //definisco dove sono gli asset statici
 app.use(express.static("public")); //http://localhost:5500/
 
@@ -17,6 +19,7 @@ app.use(express.json());
 
 //rotte API
 app.use("/posts", postsRouter);
+app.use("/tags", tagsRouter);
 
 app.use(errorsHandler);
 

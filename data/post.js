@@ -1,3 +1,12 @@
+const tags = [
+    { id: 1, title: "farina" },
+    { id: 2, title: "dolci" },
+    { id: 3, title: "salato" },
+    { id: 4, title: "pane" },
+    { id: 5, title: "pasta" },
+    { id: 6, title: "pizza" },
+];
+
 const posts = [
     {
         id: 1,
