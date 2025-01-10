@@ -1,13 +1,14 @@
-const express = require("express");
-const app = express();
-const PORT = 5500;
+import express from "express";
 
 // middlewares
-const corsPolicy = require("./middlewares/corsPolicy");
-const errorsHandler = require("./middlewares/errorsHandler");
-const notFound = require("./middlewares/notFound");
-const postsRouter = require("./routers/posts");
-const tagsRouter = require("./routers/tags");
+import errorsHandler from "./middlewares/errorsHandler.js";
+import corsPolicy from "./middlewares/corsPolicy.js";
+import notFound from "./middlewares/notFound.js";
+import postsRouter from "./routers/posts.js";
+import tagsRouter from "./routers/tags.js";
+
+const app = express();
+const PORT = 5500;
 
 //definisco dove sono gli asset statici
 app.use(express.static("public")); //http://localhost:5500/

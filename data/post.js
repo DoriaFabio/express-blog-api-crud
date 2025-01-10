@@ -45,4 +45,5 @@ const posts = [
     }
 ];
 
-module.exports = posts;
+export {posts, tags};
+

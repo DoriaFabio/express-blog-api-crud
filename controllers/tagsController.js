@@ -1,5 +1,5 @@
-const tags = require("../data/post.js");
-const CustomError = require("../class/customError");
+import {tags} from "../data/post.js"
+import CustomError from "../class/customError.js";
 
 function index(req, res) {
     let data = [...tags];
@@ -11,4 +11,4 @@ function index(req, res) {
     res.json(response);
   }
 
-module.exports = { index };
+export { index };

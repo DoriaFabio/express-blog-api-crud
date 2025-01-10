@@ -1,5 +1,5 @@
-const blog = require("../data/post.js"); //i vostri posts
-const CustomError = require("../class/customError");
+import { posts } from "../data/post.js";
+import CustomError from "../class/customError.js";  //i vostri posts
 
 // const { post } = require("../routers/posts.js");
 
@@ -12,9 +12,9 @@ function index(req, res) {
   //   // copia dell'array nel caso dovessimo filtrare i dati
   // };
 
-  let blogCopy = [...blog];
+  let blogCopy = [...posts];
   if (itemTitle) {
-    blogCopy = blog.filter((item) =>
+    blogCopy = posts.filter((item) =>
       item.titolo.toLowerCase().includes(itemTitle.toLowerCase())
     );
   }
@@ -24,7 +24,7 @@ function index(req, res) {
     );
   }
   const response = {
-    totalCount: blog.length,
+    totalCount: posts.length,
     data: blogCopy,
   };
   res.json(response);
@@ -32,7 +32,7 @@ function index(req, res) {
 
 function show(req, res) {
   const id = parseInt(req.params.id);
-  const item = blog.find((item) => item.id === id);
+  const item = posts.find((item) => item.id === id);
   if (item) {
     res.json({
       success: true,
@@ -51,8 +51,8 @@ function store(req, res) {
   // res.send("Creazione nuovo post");
   let newid = 0;
   for(let i = 0; i < blog.length; i++) {
-    if(blog[i].id > newid) {
-      newid = blog[i].id
+    if(posts[i].id > newid) {
+      newid = posts[i].id
     }
   }
   newid += 1;
@@ -71,7 +71,7 @@ function store(req, res) {
 
 function update(req, res) {
   id = parseInt(req.params.id);
-  const item = blog.find((item) => item.id === id);
+  const item = posts.find((item) => item.id === id);
   if (item) {
     res.send(`Modifica integrale del post ${id}`);
     for(key in item) {
@@ -91,7 +91,7 @@ function update(req, res) {
 
 function modify(req, res) {
   id = parseInt(req.params.id);
-  const item = blog.find((item) => item.id === id);
+  const item = posts.find((item) => item.id === id);
   if (item) {
     res.send(`Modifica parziale del post ${id}`);
   } else {
@@ -105,9 +105,9 @@ function modify(req, res) {
 
 function destroy(req, res) {
   const id = parseInt(req.params.id);
-  const index = blog.findIndex((item) => item.id === id);
+  const index = posts.findIndex((item) => item.id === id);
   if (index !== -1) {
-    blog.splice(index, 1);
+    posts.splice(index, 1);
     res.sendStatus(204);
   } else {
     res.status(404);
@@ -118,4 +118,4 @@ function destroy(req, res) {
   }
 }
 
-module.exports = { index, show, store, update, modify, destroy };
+export { index, show, store, update, modify, destroy };

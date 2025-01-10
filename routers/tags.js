@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express"
 const router = express.Router();
 
-const controller = require("../controllers/tagsController")
+import { index } from "../controllers/tagsController.js";
 
-router.get("/", controller.index);
+router.get("/", index);
 
-module.exports = router;
+export default router;

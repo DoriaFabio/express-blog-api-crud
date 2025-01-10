@@ -1,8 +1,15 @@
-const express = require("express");
+import express from "express"
 const router = express.Router();
 // const checkTime = require("../middlewares/checkTime");
 
-const controller = require('../controllers/postController');
+import {
+    index,
+    show,
+    store,
+    update,
+    modify,
+    destroy,
+} from "../controllers/postController.js";
 
 // const {
 //     index,
@@ -14,21 +21,21 @@ const controller = require('../controllers/postController');
 // } = require("../controllers/postController");
 
 // index
-router.get("/", controller.index);
+router.get("/", index);
 
 // leggere un solo post - Read one - Show
-router.get("/:id", controller.show);
+router.get("/:id", show);
 
 //Create - Store
-router.post("/", controller.store);
+router.post("/", store);
 
 //Update totale - Update
-router.put("/:id", controller.update);
+router.put("/:id", update);
 
 //Update parziale - Modify
-router.patch("/:id", controller.modify);
+router.patch("/:id", modify);
 
 //Delete (cancellazione) - Destroy
-router.delete("/:id", controller.destroy);
+router.delete("/:id", destroy);
 
-module.exports = router;
+export default router;
