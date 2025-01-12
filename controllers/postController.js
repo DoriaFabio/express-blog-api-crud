@@ -1,5 +1,5 @@
 import { posts } from "../data/post.js";
-import CustomError from "../class/customError.js";  //i vostri posts
+import CustomError from "../class/customError.js";  
 
 // const { post } = require("../routers/posts.js");
 
@@ -50,7 +50,7 @@ function show(req, res) {
 function store(req, res) {
   // res.send("Creazione nuovo post");
   let newid = 0;
-  for(let i = 0; i < blog.length; i++) {
+  for(let i = 0; i < posts.length; i++) {
     if(posts[i].id > newid) {
       newid = posts[i].id
     }
@@ -59,18 +59,19 @@ function store(req, res) {
 
   const newPost = {
     id: newid,
-    titolo: req.body.titolo,
-    contenuto: req.body.contenuto,
-    immagine: req.body.immagine,
-    tags: req.body.tags
-  }
+    ...req.body,
+    // titolo: req.body.titolo,
+    // contenuto: req.body.contenuto,
+    // immagine: req.body.immagine,
+    // tags: req.body.tags
+  };
 
-  blog.push(newPost);
+  posts.push(newPost);
   res.status(201).json(newPost);
 }
 
 function update(req, res) {
-  id = parseInt(req.params.id);
+  const id = parseInt(req.params.id);
   const item = posts.find((item) => item.id === id);
   if (item) {
     res.send(`Modifica integrale del post ${id}`);
@@ -90,7 +91,7 @@ function update(req, res) {
 }
 
 function modify(req, res) {
-  id = parseInt(req.params.id);
+  const id = parseInt(req.params.id);
   const item = posts.find((item) => item.id === id);
   if (item) {
     res.send(`Modifica parziale del post ${id}`);
